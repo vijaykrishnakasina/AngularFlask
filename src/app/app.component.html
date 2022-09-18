@@ -4,6 +4,9 @@
 <!-- <button (click)="readData()">Click here to fetch data from Flask</button>
 <hr> -->
 
+<input type="text" id="username" name="username" #username>
+<button type="button" (click)="clickme(username.value)">Clickmeaa</button>
+<button type="button" (click)="exportexcel()">Export to Excel</button>
 <table id="weather">
         <tr>
             <th *ngFor="let column of headers">

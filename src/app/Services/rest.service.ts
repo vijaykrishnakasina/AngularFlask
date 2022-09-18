@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Weather } from '../Weather';
 
 @Injectable({
@@ -14,8 +14,10 @@ export class RestService implements OnInit {
 
   weatherUrl : string = "http://127.0.0.1:5000/weatherReport/";
 
-  readWeather()
+  readWeather(username : string)
   {
-    return this.http.get<Weather[]>(this.weatherUrl);
+    const headers = new HttpHeaders().append('Content-Type', 'application/json');
+    const params = new HttpParams().append('username', username);
+    return this.http.get<Weather[]>(this.weatherUrl, { headers, params});
   }
 }

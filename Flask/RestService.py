@@ -1,5 +1,6 @@
-from flask import Flask, jsonify;
+from flask import Flask, jsonify,request;
 from flask_cors import CORS;
+from datetime import datetime;
 # from flask_restful import Resource, Api;
 
 
@@ -62,6 +63,12 @@ def index():
 @app.route("/weatherReport/", methods = ['GET'])
 def WeatherReport():
     global weather
+    args = request.args;
+    print("username from reqest parms ==> ", args.get('username'))
+    now = datetime.now()
+
+    current_time = now.strftime("%H:%M:%S")
+    print("Current Time =", current_time)
     return jsonify([weather])
 
 if __name__ == '__main__':
